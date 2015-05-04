@@ -10,7 +10,23 @@ import UIKit
 
 class FirstViewController: UIViewController {
 
+    @IBOutlet weak var textView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        var tvString = ""
+        
+        if let ts: AnyObject? = defaults.objectForKey("test_string"){
+            tvString += "test_string: \(ts!) "
+        }
+        
+        if let tn: AnyObject? = defaults.objectForKey("test_number"){
+            tvString += "test_number: \(tn!)"
+        }
+        
+        textView.text = tvString
+        
     }
 }
